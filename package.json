@@ -1,0 +1,53 @@
+{
+    "name": "sexplib-actual",
+    "exportedEnvVars": {
+        "version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "113.33.03"
+        },
+        "sexplib_enable": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "enable"
+        },
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        },
+        "sexplib_installed": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "true"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        },
+        "sexplib_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "113.33.03"
+        }
+    },
+    "version": "113.33.03",
+    "dependencies": {
+        "@opam-alpha/ocamlfind": ">= 1.5.1",
+        "dependency-env": "https://github.com/npm-ml/dependency-env.git",
+        "substs": "https://github.com/yunxing/substs.git",
+        "@opam-alpha/ocamlbuild": "*",
+        "@opam-alpha/js-build-tools": ">= 113.33.04 < 113.34.00",
+        "nopam": "https://github.com/yunxing/nopam.git",
+        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git"
+    },
+    "scripts": {
+        "postinstall": "eval $(dependencyEnv) && nopam && ./configure --prefix $opam_prefix && make && (opam-installer --prefix=$opam_prefix || true)"
+    },
+    "peerDependencies": {
+        "@opam-alpha/ocaml": "= 4.02.3"
+    }
+}
